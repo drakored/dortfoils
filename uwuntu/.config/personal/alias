@@ -1,0 +1,6 @@
+alias vim="nvim"
+alias edot="$VIM $DOTFILES"
+alias evim="$VIM $DOTFILES/nvim/.config/nvim"
+alias java="java.exe"
+alias dotFileInstall="zsh $DOTFILES/install"
+
