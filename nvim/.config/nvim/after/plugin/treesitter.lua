@@ -2,7 +2,7 @@ local configs = require('nvim-treesitter.configs')
 
 configs.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "apex", "help", "javascript", "lua", "rust", "typescript" },
+  ensure_installed = { "help", "javascript", "lua", "rust", "typescript" },
 
   sync_install = false,
   auto_install = true,

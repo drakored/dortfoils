@@ -1,9 +1,9 @@
 require("dkel")
 
-vim.filetype.add({ 
+vim.filetype.add({
     extension = {
-        cls = "apex",
-        trigger = "apex",
+        cls = "apexcode",
+        trigger = "apexcode",
         soql = "soql",
         sosl = "sosl",
     }

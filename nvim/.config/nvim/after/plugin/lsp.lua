@@ -4,13 +4,23 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed {
---	'apex_ls',
+	'apex_ls',
 	'eslint',
 	'rust_analyzer',
-	-- 'soql',
-	-- 'sosl',
-	-- 'sumneko_lua',
+	--'soql',
+	--'sosl',
+	'sumneko_lua',
 }
+
+lsp.configure('sumneko_lua', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -20,13 +30,12 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<C-Space>'] = cmp.mapping.complete(),
 })
 
-lsp.setup_nvim_cmp({ 
+lsp.setup_nvim_cmp({
 	mapping = cmp_mappings
 
 })
 
 lsp.on_attach(function(client,bufnr)
-	print("help")
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -64,14 +73,16 @@ require'lspconfig'.apex_ls.setup({
     cmd = {
         "java",
         "-jar",
-       os.getenv("HOME") ..  "/.vscode-server/extensions/salesforce.salesforcedx-vscode-apex-56.5.1/dist/apex-jorje-lsp.jar",
+---       os.getenv("HOME") ..  "/.vscode-server/extensions/salesforce.salesforcedx-vscode-apex-56.5.1/dist/apex-jorje-lsp.jar",
+       os.getenv("HOME") ..  "/.local/apex-jorje-lsp.jar",
         --"apex.jorje.lsp.ApexLanguageServerLauncher"
     },
     on_attach = on_attach,
-    apex_jar_path = os.getenv("HOME") ..  "/.vscode-server/extensions/salesforce.salesforcedx-vscode-apex-56.5.1/dist/apex-jorje-lsp.jar",
+--    apex_jar_path = os.getenv("HOME") ..  "/.vscode-server/extensions/salesforce.salesforcedx-vscode-apex-56.5.1/dist/apex-jorje-lsp.jar",
+    apex_jar_path = os.getenv("HOME") ..  "/.local/apex-jorje-lsp.jar",
     apex_enable_semantic_errors = true,
     apex_enable_completion_statistics = false,
-    filetypes = { "apex", "cls", "trigger" },
+    filetypes = { "apexcode", "apex","cls", "trigger" },
     root_dir = require'lspconfig'.util.root_pattern("sfdx-project.json")
 })
 
