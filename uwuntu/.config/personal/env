@@ -11,11 +11,6 @@ startMongo() {
     sudo systemctl enable mongod
 }
 
-increaseWatchers() {
-    sudo sysctl fs.inotify.max_user_watches=65536
-    sudo sysctl -p
-}
-
 change_background() {
     dconf write /org/mate/desktop/background/picture-filename "'$HOME/dotfiles/backgrounds/$(ls ~/dotfiles/backgrounds | fzf)'"
 }

@@ -14,9 +14,10 @@ return require('packer').startup(function(use)
 	use({ 'rose-pine/neovim', as = 'rose-pine' })
 	use({ 'folke/tokyonight.nvim' })
     use({ 'catppuccin/nvim', as = 'catppuccin' })
-    use('EdenEast/nightfox.nvim')
+    use({'EdenEast/nightfox.nvim', as = 'nightfox'})
     use('gruvbox-community/gruvbox')
-    use('lunarvim/darkplus.nvim')
+    use({'lunarvim/darkplus.nvim', as = 'darkplus'})
+    use({'nyoom-engineering/oxocarbon.nvim', as = 'oxocarbon'})
 
 	-- Highlighting my syntaxes, Mommyyyyyyy
 	use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
@@ -55,5 +56,7 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'},
 		}
 	}
+
+    use("eandrju/cellular-automaton.nvim")
 
 end)

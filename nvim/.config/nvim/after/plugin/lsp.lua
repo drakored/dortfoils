@@ -9,7 +9,7 @@ lsp.ensure_installed {
 	'rust_analyzer',
 	--'soql',
 	--'sosl',
-	'sumneko_lua',
+--	'sumneko_lua',
 }
 
 lsp.configure('sumneko_lua', {
